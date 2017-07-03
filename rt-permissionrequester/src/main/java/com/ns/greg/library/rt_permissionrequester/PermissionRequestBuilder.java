@@ -95,7 +95,7 @@ public class PermissionRequestBuilder {
     private RationaleOptions rationaleOptions;
 
     public Builder setPermissions(
-        @RequestingPermission.RequestingPermssion @NonNull String... permissions) {
+        @RequestingPermission.RequestPermission @NonNull String... permissions) {
       for (String permission : permissions) {
         this.permissions.add(new Permission(permission));
       }

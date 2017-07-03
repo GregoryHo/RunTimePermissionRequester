@@ -101,7 +101,7 @@ public class RequestingPermission {
       READ_CALL_LOG, WRITE_CALL_LOG, ADD_VOICEMAIL, USE_SIP, PROCESS_OUTGOING_CALLS, BODY_SENSORS,
       SEND_SMS, RECEIVE_SMS, READ_SMS, RECEIVE_WAP_PUSH, RECEIVE_MMS, READ_EXTERNAL_STORAGE,
       WRITE_EXTERNAL_STORAGE
-  }) @Retention(RetentionPolicy.SOURCE) public @interface RequestingPermssion {
+  }) @Retention(RetentionPolicy.SOURCE) public @interface RequestPermission {
 
   }
 }

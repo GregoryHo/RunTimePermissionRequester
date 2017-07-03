@@ -12,8 +12,6 @@ public class Permission {
 
   private int selfPermission;
 
-  private boolean showRequestPermissionRationale;
-
   public Permission(String permission) {
     this.permission = permission;
   }
@@ -28,13 +26,5 @@ public class Permission {
 
   @PermissionChecker.PermissionResult public int getSelfPermission() {
     return selfPermission;
-  }
-
-  public boolean isShowRequestPermissionRationale() {
-    return showRequestPermissionRationale;
-  }
-
-  public void setShowRequestPermissionRationale(boolean showRequestPermissionRationale) {
-    this.showRequestPermissionRationale = showRequestPermissionRationale;
   }
 }
