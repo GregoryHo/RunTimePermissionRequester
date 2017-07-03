@@ -31,9 +31,9 @@ android {
 }
 
 // Home page url
-def siteUrl = 'https://github.com/GregoryHo/DialogFragmentHelper'
+def siteUrl = 'https://github.com/GregoryHo/RunTimePermissionRequester'
 // git repository url
-def gitUrl = 'https://github.com/GregoryHo/DialogFragmentHelper.git'
+def gitUrl = 'https://github.com/GregoryHo/RunTimePermissionRequester.git'
 // Maven Group ID for the artifact，
 group = "greg.library.fastdialogfragment"
 install {
