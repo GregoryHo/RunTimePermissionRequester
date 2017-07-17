@@ -3,7 +3,7 @@ package com.ns.greg.runtimepermissionrequester;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import com.ns.greg.library.rt_permissionrequester.PermissionRequestActivity;
-import com.ns.greg.library.rt_permissionrequester.PermissionRequestBuilder;
+import com.ns.greg.library.rt_permissionrequester.PermissionRequester;
 import com.ns.greg.library.rt_permissionrequester.module.RationaleOptions;
 import com.ns.greg.library.rt_permissionrequester.module.RequestingPermission;
 
@@ -16,7 +16,7 @@ public class DemoActivity extends PermissionRequestActivity {
   @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
-    new PermissionRequestBuilder.Builder().setPermissions(RequestingPermission.CAMERA,
+    new PermissionRequester.Builder().setPermissions(RequestingPermission.CAMERA,
         RequestingPermission.READ_CALENDAR)
         .setRationaleOptions(new RationaleOptions("RTPR APP", "I really need your permissions."))
         .build(this)

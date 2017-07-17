@@ -19,7 +19,7 @@ import static com.ns.greg.library.rt_permissionrequester.PermissionRequestActivi
  * Created by Gregory on 2017/6/29.
  */
 
-public class PermissionRequestBuilder {
+public class PermissionRequester {
 
   private PermissionRequestActivity activity;
 
@@ -27,7 +27,7 @@ public class PermissionRequestBuilder {
 
   private RationaleOptions rationaleOptions;
 
-  public PermissionRequestBuilder(PermissionRequestActivity activity, List<Permission> permissions,
+  private PermissionRequester(PermissionRequestActivity activity, List<Permission> permissions,
       RationaleOptions rationaleOptions) {
     this.activity = activity;
     this.permissions = permissions;
@@ -109,12 +109,12 @@ public class PermissionRequestBuilder {
       return this;
     }
 
-    public PermissionRequestBuilder build(@NonNull PermissionRequestActivity activity) {
+    public PermissionRequester build(@NonNull PermissionRequestActivity activity) {
       if (permissions.isEmpty()) {
         throw new NullPointerException("The request permissions is empty.");
       }
 
-      return new PermissionRequestBuilder(activity, permissions, rationaleOptions);
+      return new PermissionRequester(activity, permissions, rationaleOptions);
     }
   }
 }

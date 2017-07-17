@@ -2,8 +2,8 @@ package com.ns.greg.library.rt_permissionrequester;
 
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
-import android.support.annotation.RequiresPermission;
 import android.support.v7.app.AppCompatActivity;
+import com.ns.greg.library.rt_permissionrequester.module.RequestingPermission;
 
 /**
  * Created by Gregory on 2017/6/30.
@@ -11,9 +11,11 @@ import android.support.v7.app.AppCompatActivity;
 
 public abstract class PermissionRequestActivity extends AppCompatActivity {
 
-  public static final int PERMISSION_REQUEST_CODE = 7788;
+  public static final int PERMISSION_REQUEST_CODE = 0xBC;
 
-  protected abstract void onRequest(@RequiresPermission String permission, boolean granted);
+  protected void onRequest(@RequestingPermission.RequestPermission String permission, boolean granted) {
+    // Override this method
+  }
 
   @Override public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
       @NonNull int[] grantResults) {
