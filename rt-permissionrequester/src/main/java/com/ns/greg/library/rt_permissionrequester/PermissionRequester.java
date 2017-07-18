@@ -10,6 +10,7 @@ import com.ns.greg.library.fastdialogfragment.listener.SimpleDialogListener;
 import com.ns.greg.library.rt_permissionrequester.module.Permission;
 import com.ns.greg.library.rt_permissionrequester.module.RationaleOptions;
 import com.ns.greg.library.rt_permissionrequester.module.RequestingPermission;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,9 +28,10 @@ public class PermissionRequester {
 
   private RationaleOptions rationaleOptions;
 
-  private PermissionRequester(PermissionRequestActivity activity, List<Permission> permissions,
+  private PermissionRequester(PermissionRequestActivity referenceActivity, List<Permission> permissions,
       RationaleOptions rationaleOptions) {
-    this.activity = activity;
+    WeakReference<PermissionRequestActivity> weakReference = new WeakReference<>(referenceActivity);
+    this.activity = weakReference.get();
     this.permissions = permissions;
     this.rationaleOptions = rationaleOptions;
   }
@@ -38,7 +40,7 @@ public class PermissionRequester {
     // Check self permission
     for (Permission permission : permissions) {
       permission.setSelfPermission(
-          ContextCompat.checkSelfPermission(activity, permission.toString()));
+          ContextCompat.checkSelfPermission(activity, permission.getPermission()));
     }
 
     // Generate the requests that is consist of permission that is not granted
@@ -81,6 +83,10 @@ public class PermissionRequester {
       } else {
         // Just do the request
         requestPermissions(requestArray);
+      }
+    } else {
+      for (Permission permission : permissions) {
+        activity.onRequest(permission.getPermission(), true);
       }
     }
   }

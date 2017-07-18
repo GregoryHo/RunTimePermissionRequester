@@ -20,6 +20,10 @@ public class Permission {
     return permission;
   }
 
+  @RequestingPermission.RequestPermission public String getPermission() {
+    return permission;
+  }
+
   public void setSelfPermission(int selfPermission) {
     this.selfPermission = selfPermission;
   }
