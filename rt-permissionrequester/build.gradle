@@ -3,7 +3,7 @@ apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
 // Library version
-version = "1.0.5"
+version = "1.0.6"
 repositories {
   maven {
     url 'https://dl.bintray.com/gregoryho/maven'
@@ -35,7 +35,7 @@ def siteUrl = 'https://github.com/GregoryHo/RunTimePermissionRequester'
 // git repository url
 def gitUrl = 'https://github.com/GregoryHo/RunTimePermissionRequester.git'
 // Maven Group ID for the artifact，
-group = "greg.library.fastdialogfragment"
+group = "greg.ns.library"
 install {
   repositories.mavenInstaller {
     // This generates POM.xml with proper parameters
@@ -104,7 +104,7 @@ dependencies {
   compile fileTree(include: ['*.jar'], dir: 'libs')
 
   compile 'com.android.support:appcompat-v7:25.3.1'
-  compile 'greg.library.fastdialogfragment:fast-dialogfragment:1.0.7.s25'
+  compile 'greg.ns.library:fast-dialogfragment:1.0.8.s25'
 
   androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
     exclude group: 'com.android.support', module: 'support-annotations'
