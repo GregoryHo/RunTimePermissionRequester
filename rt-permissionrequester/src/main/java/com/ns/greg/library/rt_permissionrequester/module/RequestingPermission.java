@@ -6,9 +6,9 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 /**
- * Created by Gregory on 2017/6/30.
+ * @author Gregory
+ * @since 2017/6/30
  */
-
 public class RequestingPermission {
 
   /*--------------------------------

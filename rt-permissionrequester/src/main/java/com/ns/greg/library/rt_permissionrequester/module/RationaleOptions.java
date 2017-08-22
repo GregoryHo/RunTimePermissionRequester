@@ -1,9 +1,9 @@
 package com.ns.greg.library.rt_permissionrequester.module;
 
 /**
- * Created by Gregory on 2017/6/30.
+ * @author Gregory
+ * @since 2017/6/30
  */
-
 public class RationaleOptions {
 
   private String title;

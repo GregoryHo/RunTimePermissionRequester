@@ -5,7 +5,7 @@ import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import com.ns.greg.library.fastdialogfragment.FastDialogBuilder;
+import com.ns.greg.library.fastdialogfragment.FastDialog;
 import com.ns.greg.library.fastdialogfragment.listener.SimpleDialogListener;
 import com.ns.greg.library.rt_permissionrequester.module.Permission;
 import com.ns.greg.library.rt_permissionrequester.module.RationaleOptions;
@@ -17,9 +17,9 @@ import java.util.List;
 import static com.ns.greg.library.rt_permissionrequester.PermissionRequestActivity.PERMISSION_REQUEST_CODE;
 
 /**
- * Created by Gregory on 2017/6/29.
+ * @author Gregory
+ * @since 2017/6/29
  */
-
 public class PermissionRequester {
 
   private PermissionRequestActivity activity;
@@ -28,8 +28,8 @@ public class PermissionRequester {
 
   private RationaleOptions rationaleOptions;
 
-  private PermissionRequester(PermissionRequestActivity referenceActivity, List<Permission> permissions,
-      RationaleOptions rationaleOptions) {
+  private PermissionRequester(PermissionRequestActivity referenceActivity,
+      List<Permission> permissions, RationaleOptions rationaleOptions) {
     WeakReference<PermissionRequestActivity> weakReference = new WeakReference<>(referenceActivity);
     this.activity = weakReference.get();
     this.permissions = permissions;
@@ -65,12 +65,11 @@ public class PermissionRequester {
         }
 
         if (shouldShow) {
-          FastDialogBuilder.builder()
-              .setTitle(rationaleOptions.getTitle())
+          new FastDialog.Builder().setTitle(rationaleOptions.getTitle())
               .setMessage(rationaleOptions.getMessage())
               .setPositiveButtonLabel("OK")
               .setNegativeButtonLabel("CANCEL")
-              .setListener(new SimpleDialogListener() {
+              .setSimpleDialogListener(new SimpleDialogListener() {
                 @Override public void onPositiveClick(String tag, Dialog dialog) {
                   requestPermissions(requestArray);
                   dialog.dismiss();

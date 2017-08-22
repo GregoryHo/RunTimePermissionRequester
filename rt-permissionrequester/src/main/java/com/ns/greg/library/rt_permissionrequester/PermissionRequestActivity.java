@@ -6,9 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import com.ns.greg.library.rt_permissionrequester.module.RequestingPermission;
 
 /**
- * Created by Gregory on 2017/6/30.
+ * @author Gregory
+ * @since 2017/6/30
  */
-
 public abstract class PermissionRequestActivity extends AppCompatActivity {
 
   public static final int PERMISSION_REQUEST_CODE = 0xBC;

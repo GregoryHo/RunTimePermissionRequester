@@ -3,9 +3,9 @@ package com.ns.greg.library.rt_permissionrequester.module;
 import android.support.v4.content.PermissionChecker;
 
 /**
- * Created by Gregory on 2017/6/30.
+ * @author Gregory
+ * @since 2017/6/30
  */
-
 public class Permission {
 
   private String permission;
