@@ -3,7 +3,7 @@ apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
 // Library version
-version = "1.0.6"
+version = "1.0.7"
 repositories {
   maven {
     url 'https://dl.bintray.com/gregoryho/maven'
@@ -104,7 +104,7 @@ dependencies {
   compile fileTree(include: ['*.jar'], dir: 'libs')
 
   compile 'com.android.support:appcompat-v7:25.3.1'
-  compile 'greg.ns.library:fast-dialogfragment:1.0.8.s25'
+  compile 'greg.ns.library:fast-dialogfragment:1.0.9.s25'
 
   androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
     exclude group: 'com.android.support', module: 'support-annotations'
