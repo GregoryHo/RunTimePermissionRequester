@@ -10,7 +10,6 @@ public class RationaleOptions {
   private String message;
 
   public RationaleOptions(String title, String message) {
-
     this.title = title;
     this.message = message;
   }
