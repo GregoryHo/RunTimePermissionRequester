@@ -3,23 +3,20 @@ apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
 // Library version
-version = "1.0.9"
+version = "1.0.10"
 repositories {
   maven {
     url 'https://dl.bintray.com/gregoryho/maven'
   }
 }
-
 android {
   compileSdkVersion 25
   buildToolsVersion '26.0.2'
-
   defaultConfig {
     minSdkVersion 16
     targetSdkVersion 25
     versionCode 1
     versionName "1.0"
-
     testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
   }
   buildTypes {
@@ -29,7 +26,6 @@ android {
     }
   }
 }
-
 // Home page url
 def siteUrl = 'https://github.com/GregoryHo/RunTimePermissionRequester'
 // git repository url
@@ -108,7 +104,6 @@ bintray {
     publish = true
   }
 }
-
 dependencies {
   implementation fileTree(include: ['*.jar'], dir: 'libs')
   implementation 'com.android.support:appcompat-v7:25.3.1'

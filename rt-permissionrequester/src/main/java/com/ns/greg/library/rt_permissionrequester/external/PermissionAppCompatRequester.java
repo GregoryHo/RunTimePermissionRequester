@@ -1,4 +1,4 @@
-package com.ns.greg.library.rt_permissionrequester;
+package com.ns.greg.library.rt_permissionrequester.external;
 
 import android.app.Dialog;
 import android.content.pm.PackageManager;
@@ -7,6 +7,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import com.ns.greg.library.fastdialogfragment.FastDialog;
 import com.ns.greg.library.fastdialogfragment.listener.SimpleDialogListener;
+import com.ns.greg.library.rt_permissionrequester.PermissionRequestAppCompatActivity;
 import com.ns.greg.library.rt_permissionrequester.module.Permission;
 import com.ns.greg.library.rt_permissionrequester.module.RationaleOptions;
 import com.ns.greg.library.rt_permissionrequester.module.RequestingPermission;
@@ -20,17 +21,16 @@ import static com.ns.greg.library.rt_permissionrequester.PermissionRequestActivi
  * @author Gregory
  * @since 2017/6/29
  */
-public class PermissionRequester {
+public class PermissionAppCompatRequester {
 
-  private PermissionRequestActivity activity;
-
+  private PermissionRequestAppCompatActivity activity;
   private List<Permission> permissions;
-
   private RationaleOptions rationaleOptions;
 
-  private PermissionRequester(PermissionRequestActivity referenceActivity,
+  private PermissionAppCompatRequester(PermissionRequestAppCompatActivity referenceActivity,
       List<Permission> permissions, RationaleOptions rationaleOptions) {
-    WeakReference<PermissionRequestActivity> weakReference = new WeakReference<>(referenceActivity);
+    WeakReference<PermissionRequestAppCompatActivity> weakReference =
+        new WeakReference<>(referenceActivity);
     this.activity = weakReference.get();
     this.permissions = permissions;
     this.rationaleOptions = rationaleOptions;
@@ -114,12 +114,13 @@ public class PermissionRequester {
       return this;
     }
 
-    public PermissionRequester build(@NonNull PermissionRequestActivity activity) {
+    public PermissionAppCompatRequester build(
+        @NonNull PermissionRequestAppCompatActivity activity) {
       if (permissions.isEmpty()) {
         throw new NullPointerException("The request permissions is empty.");
       }
 
-      return new PermissionRequester(activity, permissions, rationaleOptions);
+      return new PermissionAppCompatRequester(activity, permissions, rationaleOptions);
     }
   }
 }

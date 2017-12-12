@@ -13,7 +13,7 @@ public abstract class PermissionRequestActivity extends Activity {
 
   public static final int PERMISSION_REQUEST_CODE = 0xBC;
 
-  protected abstract void onRequest(@RequestingPermission.RequestPermission String permission,
+  public abstract void onRequest(@RequestingPermission.RequestPermission String permission,
       boolean granted);
 
   @Override public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,

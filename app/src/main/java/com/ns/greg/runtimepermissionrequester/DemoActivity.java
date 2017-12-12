@@ -3,7 +3,7 @@ package com.ns.greg.runtimepermissionrequester;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import com.ns.greg.library.rt_permissionrequester.PermissionRequestActivity;
-import com.ns.greg.library.rt_permissionrequester.PermissionRequester;
+import com.ns.greg.library.rt_permissionrequester.external.PermissionRequester;
 import com.ns.greg.library.rt_permissionrequester.module.RationaleOptions;
 import com.ns.greg.library.rt_permissionrequester.module.RequestingPermission;
 
