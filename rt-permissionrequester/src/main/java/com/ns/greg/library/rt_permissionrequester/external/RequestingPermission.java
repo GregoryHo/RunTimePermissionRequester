@@ -1,4 +1,4 @@
-package com.ns.greg.library.rt_permissionrequester.module;
+package com.ns.greg.library.rt_permissionrequester.external;
 
 import android.Manifest;
 import android.support.annotation.StringDef;

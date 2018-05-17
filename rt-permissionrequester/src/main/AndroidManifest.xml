@@ -1,5 +1,14 @@
 <manifest
-    package="com.ns.greg.library.rt_permissionrequester"
-    >
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ns.greg.library.rt_permissionrequester">
+
+  <application>
+    <activity
+        android:name=".PermissionRequestActivity"
+        android:configChanges="orientation|keyboardHidden|screenSize"
+        android:multiprocess="true"
+        android:theme="@style/ActivityTheme"
+        android:windowSoftInputMode="stateHidden|stateAlwaysHidden"/>
+  </application>
 
 </manifest>

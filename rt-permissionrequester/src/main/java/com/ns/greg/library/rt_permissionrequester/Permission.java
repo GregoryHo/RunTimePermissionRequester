@@ -1,18 +1,18 @@
-package com.ns.greg.library.rt_permissionrequester.module;
+package com.ns.greg.library.rt_permissionrequester;
 
 import android.support.v4.content.PermissionChecker;
+import com.ns.greg.library.rt_permissionrequester.external.RequestingPermission;
 
 /**
  * @author Gregory
  * @since 2017/6/30
  */
-public class Permission {
+class Permission {
 
-  private String permission;
-
+  private final String permission;
   private int selfPermission;
 
-  public Permission(String permission) {
+  Permission(String permission) {
     this.permission = permission;
   }
 
