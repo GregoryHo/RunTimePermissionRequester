@@ -112,7 +112,6 @@ public final class PermissionRequestActivity extends Activity {
           }
 
           listener.onGranted(list);
-          PermissionRequester.listener = null;
         }
 
       }
@@ -144,7 +143,6 @@ public final class PermissionRequestActivity extends Activity {
 
           listener.onGranted(granted);
           listener.onDenied(denied);
-          PermissionRequester.listener = null;
         }
 
         finish();
