@@ -50,6 +50,9 @@ public class PermissionRequester {
 
     public Builder(Context context) {
       this.context = context;
+      this.permissions = null;
+      this.rationaleOption = null;
+      this.listener = null;
     }
 
     public Builder setPermissions(@RequestingPermission.RequestPermission String... permissions) {
