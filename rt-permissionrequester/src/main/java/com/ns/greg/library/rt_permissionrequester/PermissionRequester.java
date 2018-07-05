@@ -72,7 +72,7 @@ public class PermissionRequester {
 
     public PermissionRequester build() {
       if (permissions == null || permissions.length == 0) {
-        throw new NullPointerException("The request permissions is empty.");
+        throw new IllegalArgumentException("The request permissions is empty.");
       }
 
       return new PermissionRequester(context, permissions, rationaleOption, listener);
