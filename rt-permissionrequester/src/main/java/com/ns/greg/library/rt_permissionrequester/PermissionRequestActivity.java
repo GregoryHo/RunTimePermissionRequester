@@ -99,11 +99,10 @@ public final class PermissionRequestActivity extends Activity {
             requestPermissions(requestArray);
           }
         } else {
-          // Just do the request
           requestPermissions(requestArray);
         }
       } else {
-        // Nothing needs to request, just fire the callback
+        /* nothing needs to request, just fire the callback */
         SimplePermissionListener listener = PermissionRequester.listener;
         if (listener != null) {
           List<String> list = new ArrayList<>(permissionList.size());
@@ -114,6 +113,7 @@ public final class PermissionRequestActivity extends Activity {
           listener.onGranted(list);
         }
 
+        finish();
       }
     }
   }
