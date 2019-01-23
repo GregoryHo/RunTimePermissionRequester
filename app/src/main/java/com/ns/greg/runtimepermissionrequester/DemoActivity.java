@@ -47,6 +47,7 @@ public class DemoActivity extends Activity {
 
   @Override protected void onResume() {
     super.onResume();
+    System.out.println("onResume");
   }
 }
 
