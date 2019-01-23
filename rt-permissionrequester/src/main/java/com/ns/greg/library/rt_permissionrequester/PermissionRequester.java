@@ -2,10 +2,15 @@ package com.ns.greg.library.rt_permissionrequester;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import com.ns.greg.library.rt_permissionrequester.external.RationaleOption;
 import com.ns.greg.library.rt_permissionrequester.external.RequestingPermission;
 import com.ns.greg.library.rt_permissionrequester.external.SimplePermissionListener;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static com.ns.greg.library.rt_permissionrequester.PermissionConstants.KEY_BUNDLE_REQUEST;
 import static com.ns.greg.library.rt_permissionrequester.PermissionConstants.KEY_PERMISSIONS;
@@ -21,7 +26,7 @@ public class PermissionRequester {
   private final String[] permissions;
   private final RationaleOption rationaleOption;
   // static listener for communicate between activities
-  static SimplePermissionListener listener;
+  private static SimplePermissionListener listener;
 
   private PermissionRequester(Context context, String[] permissions,
       RationaleOption rationaleOption, SimplePermissionListener listener) {
@@ -31,14 +36,39 @@ public class PermissionRequester {
     PermissionRequester.listener = listener;
   }
 
+  static void onRequested(List<String> granted, List<String> denied) {
+    if (listener != null) {
+      synchronized (PermissionRequester.class) {
+        if (listener != null) {
+          listener.onGranted(granted);
+          listener.onDenied(denied);
+          listener = null;
+        }
+      }
+    }
+  }
+
   public void request() {
-    Intent intent = new Intent(context, PermissionRequestActivity.class);
-    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-    Bundle bundle = new Bundle();
-    bundle.putStringArray(KEY_PERMISSIONS, permissions);
-    bundle.putParcelable(KEY_RATIONALE_OPTIONS, rationaleOption);
-    intent.putExtra(KEY_BUNDLE_REQUEST, bundle);
-    context.startActivity(intent);
+    boolean allGranted = true;
+    for (String permission : permissions) {
+      if (ContextCompat.checkSelfPermission(context, permission)
+          != PackageManager.PERMISSION_GRANTED) {
+        allGranted = false;
+        break;
+      }
+    }
+
+    if (allGranted) {
+      onRequested(Arrays.asList(permissions), new ArrayList<String>());
+    } else {
+      Intent intent = new Intent(context, PermissionRequestActivity.class);
+      intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+      Bundle bundle = new Bundle();
+      bundle.putStringArray(KEY_PERMISSIONS, permissions);
+      bundle.putParcelable(KEY_RATIONALE_OPTIONS, rationaleOption);
+      intent.putExtra(KEY_BUNDLE_REQUEST, bundle);
+      context.startActivity(intent);
+    }
   }
 
   public static final class Builder {

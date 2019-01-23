@@ -59,7 +59,7 @@ public final class PermissionRequestActivity extends Activity {
           }
         }
 
-        notifyRequestResult();
+        requested();
         break;
 
       default:
@@ -67,11 +67,16 @@ public final class PermissionRequestActivity extends Activity {
     }
   }
 
+  @Override protected void onDestroy() {
+    super.onDestroy();
+    PermissionRequester.onRequested(granted, denied);
+  }
+
   private void checkBundle() {
     String[] permissions = bundle.getStringArray(KEY_PERMISSIONS);
     if (permissions == null) {
       Log.e(getClass().getSimpleName(), "the request permissions is null.");
-      notifyRequestResult();
+      requested();
     } else {
       requestPermission(permissions);
     }
@@ -119,7 +124,7 @@ public final class PermissionRequestActivity extends Activity {
               .setSimpleDialogListener(new SimpleDialogListener() {
                 @Override public void onNegativeClick(String tag, Dialog dialog) {
                   super.onNegativeClick(tag, dialog);
-                  notifyRequestResult();
+                  requested();
                 }
 
                 @Override public void onPositiveClick(String tag, Dialog dialog) {
@@ -136,7 +141,7 @@ public final class PermissionRequestActivity extends Activity {
       }
     } else {
       /* nothing needs to request */
-      notifyRequestResult();
+      requested();
     }
   }
 
@@ -144,12 +149,7 @@ public final class PermissionRequestActivity extends Activity {
     ActivityCompat.requestPermissions(this, requestArray, PERMISSION_REQUEST_CODE);
   }
 
-  private void notifyRequestResult() {
-    if (PermissionRequester.listener != null) {
-      PermissionRequester.listener.onGranted(granted);
-      PermissionRequester.listener.onDenied(denied);
-    }
-
+  private void requested() {
     finish();
   }
 }
